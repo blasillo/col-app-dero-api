@@ -14,6 +14,11 @@ public class PrincipalControlador {
         return "{\"mensaje\": \"Hola\"}";
     }
 
+    @GetMapping("/api/v1/cervezas")
+    public String todas() {
+        return "{}";
+    }
+
 
 
 }

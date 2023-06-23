@@ -1,9 +1,12 @@
 
+
 /*
+
 INSERT INTO colapp.USUARIOS VALUES (1, 'administrador-colapp@jcyl.es', 'supersecreto', '', 'Administrador', 'ADMINISTRADOR');
 INSERT INTO colapp.Usuarios VALUES (2, 'TorGomRo@jcyl.es', 'TorGomRo', '', 'Roberto Torres', 'USUARIO' );
 INSERT INTO colapp.Usuarios VALUES (3, 'NecSotGa@jcyl.es', 'NecSotGa', '', 'Gabriel Necedes', 'USUARIO' );
 INSERT INTO colapp.Usuarios VALUES (4, 'LopGarIo@jcyl.es', 'LopGarIo', '', 'Iovani Lopez' ,'USUARIO' );
+
 
 
 INSERT INTO colapp.cervezas VALUES (1,'Duvel','duvel.png',8.5,'Rubia','Strong Blond','Cerveza especial belga de alta fermentación, con segunda fermentación en botella. Aromas afrutados, evocando el olor a pera y manzana.');
