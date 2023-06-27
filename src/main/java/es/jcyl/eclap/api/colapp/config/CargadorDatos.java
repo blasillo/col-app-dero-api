@@ -22,7 +22,15 @@ public class CargadorDatos implements ApplicationRunner {
                       .nombre("Administrador")
                       .rol("ADMINISTRADOR")
                       .passwordHash("")
-                      .build()
+                      .build(),
+            Usuario.builder()
+                    .id(2)
+                    .email("TorGomRo@jcyl.es")
+                    .password("TorGomRo")
+                    .nombre("Roberto Torres")
+                    .rol("USUARIO")
+                    .passwordHash("")
+                    .build()
             );
 
 

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name="CERVEZAS")
@@ -24,5 +25,9 @@ public class Cerveza {
     private String color;
     private String categoria;
     private String descripcion;
+
+    //private List<Nota> notas;
+
+
 
 }
