@@ -1,8 +1,6 @@
 package es.jcyl.eclap.api.colapp.persistencia.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 
@@ -11,13 +9,22 @@ import java.sql.Timestamp;
 public class Nota {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name="NOTA_ID")
     private Long id;
     private Timestamp creado;
     private String titulo;
     private String contenido;
     private Boolean notaPublica;
 
-    //private Usuario usuario;
+    @OneToOne
+    @JoinColumn (name = "USUARIO_ID", nullable = false, updatable = false)
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "CERVEZA_ID", nullable = false, updatable = false)
+    private Cerveza cerveza;
+
 
 
 

@@ -34,7 +34,8 @@ public class Cerveza {
     @Column(name="DESCRIPCION", length=1024)
     private String descripcion;
 
-    //private List<Nota> notas;
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "cerveza")
+    private List<Nota> notas;
 
 
 
