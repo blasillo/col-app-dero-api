@@ -2,7 +2,9 @@ package es.jcyl.eclap.api.colapp.controladores;
 
 
 import es.jcyl.eclap.api.colapp.ColAppDeroApiApplication;
+import es.jcyl.eclap.api.colapp.persistencia.entidades.Cerveza;
 import es.jcyl.eclap.api.colapp.persistencia.entidades.Usuario;
+import es.jcyl.eclap.api.colapp.persistencia.repositorios.CervezasRepo;
 import es.jcyl.eclap.api.colapp.persistencia.repositorios.UsuariosRepo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -21,6 +23,10 @@ public class PrincipalControlador {
     @Autowired
     private UsuariosRepo usuariosRepo;
 
+    @Autowired
+    private CervezasRepo cervezasRepo;
+
+
     @GetMapping("/hola")
     String hola() {
         return "{\"mensaje\": \"Hola\"}";
@@ -37,6 +43,21 @@ public class PrincipalControlador {
         LOGGER.info("Leyendo usuario : " + id);
 
         return usuariosRepo.findById(id);
+    }
+
+
+    @GetMapping("/api/v1/cervezas")
+    public List<Cerveza> todasCervezas() {
+        LOGGER.info("Leyendo todas las cervezas");
+
+        return cervezasRepo.findAll();
+    }
+
+    @GetMapping("/api/v1/cervezas/{id}")
+    public Cerveza cervezaPorId(@PathVariable Long id) {
+        LOGGER.info("Leyendo cerveza : " + id);
+
+        return cervezasRepo.findById(id).get();
     }
 
 

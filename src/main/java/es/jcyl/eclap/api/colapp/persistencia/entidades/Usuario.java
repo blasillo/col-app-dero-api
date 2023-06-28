@@ -16,7 +16,7 @@ import java.security.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "USUARIOS")
+@Table(name = "USUARIOS", schema = "COLAPP")
 public class Usuario {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
