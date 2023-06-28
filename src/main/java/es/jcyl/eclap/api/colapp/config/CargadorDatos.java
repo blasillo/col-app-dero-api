@@ -2,9 +2,11 @@ package es.jcyl.eclap.api.colapp.config;
 
 import es.jcyl.eclap.api.colapp.persistencia.entidades.Cerveza;
 import es.jcyl.eclap.api.colapp.persistencia.entidades.Imagen;
+import es.jcyl.eclap.api.colapp.persistencia.entidades.Nota;
 import es.jcyl.eclap.api.colapp.persistencia.entidades.Usuario;
 import es.jcyl.eclap.api.colapp.persistencia.repositorios.CervezasRepo;
 import es.jcyl.eclap.api.colapp.persistencia.repositorios.ImagenesRepo;
+import es.jcyl.eclap.api.colapp.persistencia.repositorios.NotasRepositorio;
 import es.jcyl.eclap.api.colapp.persistencia.repositorios.UsuariosRepo;
 import es.jcyl.eclap.api.colapp.utiles.ImagenUtiles;
 import org.apache.commons.io.FileUtils;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOError;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +30,21 @@ import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 
 @Component
 public class CargadorDatos implements ApplicationRunner {
+
+    @Autowired
+    private UsuariosRepo usuariosRepo;
+
+    @Autowired
+    private CervezasRepo cerevezasRepo;
+
+    @Autowired
+    private ImagenesRepo imagenesRepo;
+
+    @Autowired
+    private NotasRepositorio notasRepo;
+
+    @Autowired
+    private ResourcePatternResolver resolver;
 
     List<Usuario>  listaUsuarios = Arrays.asList(
               Usuario.builder()
@@ -65,21 +83,21 @@ public class CargadorDatos implements ApplicationRunner {
                     .descripcion("La cerveza de Triple de Chimay es la más reciente de la abadía de un color dorado, la cerveza trapense combina el sabor dulce y amargo en un equilibrio poco común.")
                     .build()
     );
-    @Autowired
-    private UsuariosRepo usuariosRepo;
 
-    @Autowired
-    private CervezasRepo cerevezasRepo;
+    List<Nota> notas = Arrays.asList(
+            Nota.builder()
+                .id(1L)
+                .usuario( listaUsuarios.get(0))
+                .titulo("Sobrevalorada cerveza")
+                .contenido("La cerveza en sí no está mal, pero demasiada fama para lo que es")
+                .notaPublica(Boolean.TRUE)
+                .cerveza( listaCervezas.get(1))
+                .build()
+    );
 
-    @Autowired
-    private ImagenesRepo imagenesRepo;
-
-    @Autowired
-    private ResourcePatternResolver resolver;
 
 
     private void cargadorImagenes () throws IOException{
-
         final String root = resolver.getResource("classpath:/static/imagenes").getURI().toString();
         Resource[] resources = resolver.getResources("classpath:/static/imagenes/*.png");
         cargadorRecursos( resources, "image/png");
@@ -113,6 +131,7 @@ public class CargadorDatos implements ApplicationRunner {
 
         usuariosRepo.saveAll(listaUsuarios);
         cerevezasRepo.saveAll( listaCervezas);
+        notasRepo.saveAll( notas );
 
         cargadorImagenes();
 
