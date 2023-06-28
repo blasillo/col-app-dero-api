@@ -1,6 +1,7 @@
 package es.jcyl.eclap.api.colapp.persistencia.entidades;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,7 @@ import java.util.List;
 public class Cerveza {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "CERVEZA_ID")
     private Long id;
     @Column (name="NOMBRE", length = 120, nullable = false)
@@ -34,9 +35,8 @@ public class Cerveza {
     @Column(name="DESCRIPCION", length=1024)
     private String descripcion;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "cerveza")
+    @JsonManagedReference
+    @OneToMany (fetch=FetchType.LAZY,  mappedBy = "cerveza")
     private List<Nota> notas;
-
-
 
 }

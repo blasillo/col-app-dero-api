@@ -65,16 +65,20 @@ public class CargadorDatos implements ApplicationRunner {
                     .build()
             );
 
+
+
     List<Cerveza>  listaCervezas = Arrays.asList(
             Cerveza.builder()
-                    .id(1L).nombre("Duvel").imagen("duvel.png")
+                    //.id(1L)
+                    .nombre("Duvel").imagen("duvel.png")
                     .alcohol(8.5)
                     .color("Rubia")
                     .categoria("Strong Blond")
                     .descripcion("Cerveza especial belga de alta fermentación, con segunda fermentación en botella. Aromas afrutados, evocando el olor a pera y manzana.")
+                    //.notas( notas )
                     .build(),
             Cerveza.builder()
-                    .id(2L)
+                  //  .id(2L)
                     .nombre("Chimay Triple")
                     .imagen("chimay_triple.png")
                     .alcohol( 8.0)
@@ -86,13 +90,13 @@ public class CargadorDatos implements ApplicationRunner {
 
     List<Nota> notas = Arrays.asList(
             Nota.builder()
-                .id(1L)
-                .usuario( listaUsuarios.get(0))
-                .titulo("Sobrevalorada cerveza")
-                .contenido("La cerveza en sí no está mal, pero demasiada fama para lo que es")
-                .notaPublica(Boolean.TRUE)
-                .cerveza( listaCervezas.get(1))
-                .build()
+                    //   .id(1L)
+                    .usuario( listaUsuarios.get(0))
+                    .titulo("Sobrevalorada cerveza")
+                    .contenido("La cerveza en sí no está mal, pero demasiada fama para lo que es")
+                    .notaPublica(Boolean.TRUE)
+                    .cerveza( listaCervezas.get(0) )
+                    .build()
     );
 
 
@@ -131,9 +135,7 @@ public class CargadorDatos implements ApplicationRunner {
 
         usuariosRepo.saveAll(listaUsuarios);
         cerevezasRepo.saveAll( listaCervezas);
-        notasRepo.saveAll( notas );
-
+        notasRepo.save( notas.get(0) );
         cargadorImagenes();
-
     }
 }

@@ -1,5 +1,6 @@
 package es.jcyl.eclap.api.colapp.persistencia.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,7 @@ import java.sql.Timestamp;
 public class Nota {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="NOTA_ID")
     private Long id;
     @Column(name="F_CREACION")
@@ -39,7 +40,7 @@ public class Nota {
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "CERVEZA_ID", nullable = false, updatable = false)
+    @JsonBackReference
+    @JoinColumn(name = "CERVEZA_ID", referencedColumnName = "CERVEZA_ID", insertable = true)
     private Cerveza cerveza;
-
 }
