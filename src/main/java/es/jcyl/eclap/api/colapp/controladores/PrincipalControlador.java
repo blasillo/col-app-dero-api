@@ -18,8 +18,6 @@ public class PrincipalControlador {
 
     private static final Log LOGGER = LogFactory.getLog(ColAppDeroApiApplication.class);
 
-    @Autowired
-    private UsuariosRepo usuariosRepo;
 
     @Autowired
     private CervezasRepo cervezasRepo;
@@ -30,18 +28,7 @@ public class PrincipalControlador {
         return "{\"mensaje\": \"Hola\"}";
     }
 
-    @GetMapping("/api/v1/usuarios")
-    public List<Usuario> todosUsuarios() {
-        LOGGER.info("Leyendo todos los usuarios");
-        return usuariosRepo.findAll();
-    }
 
-    @GetMapping("/api/v1/usuarios/{id}")
-    public Optional<Usuario> usuarioPorId(@PathVariable Integer id) {
-        LOGGER.info("Leyendo usuario : " + id);
-
-        return usuariosRepo.findById(id);
-    }
 
 
     @GetMapping("/api/v1/cervezas")
