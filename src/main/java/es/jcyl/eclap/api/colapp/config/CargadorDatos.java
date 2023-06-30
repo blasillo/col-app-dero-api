@@ -62,6 +62,14 @@ public class CargadorDatos implements ApplicationRunner {
                     .nombre("Roberto Torres")
                     .rol("USUARIO")
                     .passwordHash("")
+                    .build(),
+            Usuario.builder()
+                    .id(2)
+                    .email("invitado@jcyl.es")
+                    .password("cambialaclave")
+                    .nombre("Invitado")
+                    .rol("USUARIO")
+                    .passwordHash("")
                     .build()
             );
 
@@ -85,7 +93,72 @@ public class CargadorDatos implements ApplicationRunner {
                     .color ("Rubia")
                     .categoria("Triple Trappist")
                     .descripcion("La cerveza de Triple de Chimay es la más reciente de la abadía de un color dorado, la cerveza trapense combina el sabor dulce y amargo en un equilibrio poco común.")
+                    .build(),
+            Cerveza.builder()
+                    .nombre("Cornet")
+                    .imagen("cornet.png")
+                    .alcohol(8.5)
+                    .color("Rubia")
+                    .categoria("Strong Blond")
+                    .descripcion("De color dorado y sutil sabor a madera, refinado y peculiar. Sensación en boca como un vino de crianza roble. Con cuerpo, toque a roble, equilibrio entre la frutosidad de la levadura y la dulzura de la vainilla.")
+                    .build(),
+            Cerveza.builder()
+                    .nombre("Montaraz")
+                    .imagen("montaraz.png")
+                    .alcohol(5.3)
+                    .color("Rubia")
+                    .categoria("Weizen-Weissbier")
+                    .descripcion("La primera creación de cervezas Montaraz, una cerveza rubia de trigo, suave, refrescante y con ligero aroma a plátano. Una cerveza artesana, elaborada en el Bierzo.")
+                    .build(),
+            Cerveza.builder()
+                    .nombre("Ruda")
+                    .imagen("ruda.jpg")
+                    .alcohol(5.0)
+                    .color("Tostada")
+                    .categoria("Pale Ale")
+                    .descripcion("Color ámbar y densa espuma, ligeramente amarga y notas dulces maltosas.")
+                    .build(),
+            Cerveza.builder()
+                    .nombre("3 Cumbres")
+                    .imagen("3cumbres.png")
+                    .alcohol(4.5)
+                    .color("Rubia")
+                    .categoria("Lager")
+                    .descripcion("De color claro, es ligera, suave y muy refrescante que está elaborada siguiendo la Ley de la Pureza Alemana. Una cerveza ideal para cualquier momento y ocasión.")
+                    .build(),
+            Cerveza.builder()
+                    .nombre("Berzaga")
+                    .imagen("berzaga.jpg")
+                    .alcohol(5.0)
+                    .color("Tostada")
+                    .categoria("Amber Ale")
+                    .descripcion("Cerveza artesana tostada al estilo Inglés. Fácil de beber y baja carbonatación. Elaborada con una selección de cuatro maltas, muestra cierto dulzor inicial seguido de un sabor caramelizado que finaliza con toques tostados y un suave amargor en boca, fruto de los lúpulos balanceados en tiempo de cocción.")
+                    .build(),
+            Cerveza.builder()
+                    .nombre("Tormenta Solar")
+                    .imagen("baixer-tormenta-solar.jpg")
+                    .alcohol(6.5)
+                    .color("Naranja pálido")
+                    .categoria("Saison")
+                    .descripcion("Cerveza de estilo Saison con auténtica levadura Saison. Estilo tipicamente belga de granja, en este caso con lúpulo neozelandés Nelson Sauvín, una combinación interesante de los sabores afrutados aportados por la levadura y los sabores y aromas tropicales y de vino blanco de este lúpulo, añadido en whirpool.")
+                    .build(),
+            Cerveza.builder()
+                    .nombre("Perraborracha")
+                    .imagen("perraborracha.png")
+                    .alcohol(4.6)
+                    .color("Ambar")
+                    .categoria("American Pale Ale")
+                    .descripcion("American Pale Ale fresquita y sin complicaciones, amarga poco y es muy fácil de beber.")
+                    .build(),
+            Cerveza.builder()
+                    .nombre("Barreno")
+                    .imagen("barreno.png")
+                    .alcohol(8.8)
+                    .color("Negra")
+                    .categoria("Stout")
+                    .descripcion("Cerveza negra, con aromas y sabor a café, regaliz, chocolate toque licoroso que da paso a ligero lúpulo. Cuerpo medio-completo. Amarga.")
                     .build()
+
     );
 
     List<Nota> notas = Arrays.asList(

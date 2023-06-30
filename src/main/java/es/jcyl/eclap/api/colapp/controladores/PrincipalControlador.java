@@ -9,9 +9,7 @@ import es.jcyl.eclap.api.colapp.persistencia.repositorios.UsuariosRepo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -61,7 +59,13 @@ public class PrincipalControlador {
     }
 
 
+    @GetMapping("/api/v1/cervezas/consulta")
+    @ResponseBody
+    public List<Cerveza> busquedaCervezas (@RequestParam(name = "q", required = true) String consulta){
+        LOGGER.info("Consulta cervezas : " + consulta );
 
+        return cervezasRepo.findByConsulta(consulta);
+    }
 
 
 }
