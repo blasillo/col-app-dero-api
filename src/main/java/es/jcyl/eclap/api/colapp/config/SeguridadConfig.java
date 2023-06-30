@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SeguridadConfig {
 
     private static final String[] LISTA_AUTORIZACION = {
-            "/v2/api-docs", "/swagger-resources", "/swagger-resources/**",
+            "/colapp/api/v1/**", "/colapp/h2-console/**", "/colapp/swagger-ui/**",
     };
 
     @Bean
